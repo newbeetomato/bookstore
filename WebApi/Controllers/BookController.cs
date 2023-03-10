@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.BookOperations.CreateBook;
 using WebApi.BookOperations.DeleteBook;
+using WebApi.BookOperations.GetBookDetail;
 using WebApi.BookOperations.GetBooks;
+using WebApi.BookOperations.UpdateBook;
 using WebApi.DBOperations;
 using WebApi.GetBookDetail.GetBookDetail;
 
@@ -48,6 +50,8 @@ namespace WebApi.AddControllers
             {
                 GetBookDetailQuery query = new GetBookDetailQuery(_context, _mapper);
                 query.BookId = id;
+                GetBookDetailValidator validator = new GetBookDetailValidator();
+                validator.ValidateAndThrow(query);
                 result = query.Handle();
 
             }
@@ -59,6 +63,7 @@ namespace WebApi.AddControllers
         }
         [HttpPost]
         public IActionResult AddBook([FromBody] CreateBookModel newBook)
+        // CreateBookModel Kalıbında değer alacak
         {
             CreateBookCommand command = new CreateBookCommand(_context, _mapper);
             try
@@ -85,6 +90,8 @@ namespace WebApi.AddControllers
             {
                 command.BookId = id;
                 command.Model = updatedBook;
+                UpdateBookCommandValidator validator = new UpdateBookCommandValidator();
+                validator.ValidateAndThrow(command);
                 command.Handle();
             }
             catch (Exception ex)
