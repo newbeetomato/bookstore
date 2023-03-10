@@ -40,3 +40,4 @@ C:\Users\ibrah\Desktop\patika net kurs\bookstore\WebApi\bin\Debug\net7.0\Newtons
 C:\Users\ibrah\Desktop\patika net kurs\bookstore\WebApi\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
 C:\Users\ibrah\Desktop\patika net kurs\bookstore\WebApi\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\ibrah\Desktop\patika net kurs\bookstore\WebApi\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\ibrah\Desktop\patika net kurs\bookstore\WebApi\bin\Debug\net7.0\FluentValidation.dll

@@ -1,5 +1,7 @@
 using AutoMapper;
 using BookOperations.UpdateBook;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.BookOperations.CreateBook;
@@ -29,7 +31,7 @@ namespace WebApi.AddControllers
         {
             try
             {
-                GetBooksQuery query = new GetBooksQuery(_context,_mapper);
+                GetBooksQuery query = new GetBooksQuery(_context, _mapper);
                 var result = query.Handle(ShortType);
                 return Ok(result);
             }
@@ -44,31 +46,33 @@ namespace WebApi.AddControllers
             BookDetailViewModel result;
             try
             {
-                GetBookDetailQuery query = new GetBookDetailQuery(_context,_mapper);
+                GetBookDetailQuery query = new GetBookDetailQuery(_context, _mapper);
                 query.BookId = id;
                 result = query.Handle();
 
             }
             catch (Exception ex)
             {
-                    return BadRequest(ex.Message);
+                return BadRequest(ex.Message);
             }
-                return Ok(result);
+            return Ok(result);
         }
         [HttpPost]
         public IActionResult AddBook([FromBody] CreateBookModel newBook)
         {
-            CreateBookCommand command = new CreateBookCommand(_context,_mapper);
+            CreateBookCommand command = new CreateBookCommand(_context, _mapper);
             try
             {
                 command.Model = newBook;
+                CreateBookCommanValidator validator = new CreateBookCommanValidator();
+                validator.ValidateAndThrow(command);
                 command.Handle();
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-            return Created("201", newBook); // 201 kodu
+            return Created("201", newBook); // 201 
 
         }
 
@@ -79,13 +83,13 @@ namespace WebApi.AddControllers
             UpdateBookCommand command = new UpdateBookCommand(_context);
             try
             {
-                command.BookId = id;  
-                command.Model= updatedBook;
+                command.BookId = id;
+                command.Model = updatedBook;
                 command.Handle();
             }
             catch (Exception ex)
             {
-                return StatusCode(400,ex);
+                return StatusCode(400, ex);
             }
             return Ok(updatedBook); //200
 
@@ -95,7 +99,7 @@ namespace WebApi.AddControllers
         {
             try
             {
-                
+
                 var book = _context.Books.SingleOrDefault(x => x.Id == id);
                 if (book == null)
                 { return NotFound(); }
@@ -118,17 +122,19 @@ namespace WebApi.AddControllers
         [HttpDelete("{id}")]
         public IActionResult DeleteBook(int id)
         {
-             DeleteBookCommand command = new DeleteBookCommand(_context);
+            DeleteBookCommand command = new DeleteBookCommand(_context);
             try
             {
-                command.BookId= id;
+                command.BookId = id;
+                DeleteBookCommandValidator validator = new DeleteBookCommandValidator();
+                validator.ValidateAndThrow(command);
                 command.Handle();
                 return Ok(); //200 durum kodu
             }
             catch (Exception ex)
             {
 
-                return StatusCode(400,ex.Message);
+                return StatusCode(400, ex.Message);
 
             }
 

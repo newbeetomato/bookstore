@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "KLde5TuVEHHMPdzx4nj+wX5Ymflq8eIouwKBNm4Uvy7aXMIomGcoW7JrPfPb/M4G08X3a41YhrGMUCRLKPJzLw==",
+  "dgSpecHash": "10wYPCf8FaBn+PcdA+3PMIORVhgDMIBezmvfqsz4F2gjjxsiQZqhqNmUwhvtvTTPcOib73ik/AIOnAZb5yASLA==",
   "success": true,
   "projectFilePath": "C:\\Users\\ibrah\\Desktop\\patika net kurs\\bookstore\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ibrah\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\ibrah\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\ibrah\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
     "C:\\Users\\ibrah\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.2\\microsoft.aspnetcore.jsonpatch.7.0.2.nupkg.sha512",
     "C:\\Users\\ibrah\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\7.0.2\\microsoft.aspnetcore.mvc.newtonsoftjson.7.0.2.nupkg.sha512",
     "C:\\Users\\ibrah\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",

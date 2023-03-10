@@ -11,6 +11,7 @@ namespace WebApi.Common
     {
         //biraz karışık gelicek ama modelleri başka bir modele dönüştürmeye yarıyor yada
         //başka bir model için a modeli gbi çalış demek gibi birşey  
+        // yeni bi kalıp oluştur mapperla bilgiyi oraya yerleştir
         public MappingProfile() 
         {
             CreateMap<CreateBookModel, Book>();
